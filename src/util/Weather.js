@@ -50,15 +50,19 @@ export const Weather = {
     },
 
     getHourly(WeatherObject, parameter) {
-        var object = {};
+        var array = [];
         WeatherObject.hourly.forEach(hour => {
+            var time = hour.dt;
+            var object = {
+                time: hour[parameter]
+            }
             if (parameter === 'conditions') {
-                object[hour.dt] = hour.weather[0].description;
+                array.push(object);
             } else {
-                object[hour.dt] = hour[parameter];
+                array.push(object);
             }
         })
-        return object;
+        return array;
         
     }
     
