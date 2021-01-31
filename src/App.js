@@ -6,6 +6,7 @@ import { Weather } from './util/Weather';
 import { exampleObject } from './util/exampleObject';
 
 // Import Components 
+import { CardContainer } from './components/card/CardContainer';
 
 class App extends React.Component {
   constructor(props) {
@@ -33,7 +34,12 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <Card />
+        <div className="card-group">
+          <CardContainer mainValue={`${this.state.weather.current.temp}`} description={'temperature'}/>
+          <CardContainer mainValue={`${this.state.weather.current.humidity}%`} description={'humidity'}/>
+          <CardContainer mainValue={`${this.state.weather.current.uvi}`} description={'UV Index'}/>
+        </div>
+       
       </div>
     );
   }
