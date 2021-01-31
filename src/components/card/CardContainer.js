@@ -5,7 +5,7 @@ export class CardContainer extends React.Component {
 
     render() {
         return (
-            <Card mainText={this.props.mainValue} description={this.props.description}/>            
+            <Card mainText={this.props.mainValue} description={this.props.description} inputType={this.props.inputType}/>            
         )
     }
 }

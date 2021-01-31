@@ -12,7 +12,11 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      weather: exampleObject
+      weather: exampleObject,
+      hourlyTemp: Weather.getHourly(exampleObject, 'temp'),
+      hourlyUvi: Weather.getHourly(exampleObject, 'uvi'),
+      hourlyHumidity: Weather.getHourly(exampleObject, 'humidity'),
+      hourlyConditions: Weather.getHourly(exampleObject, 'conditions')
     }
     this.getWeather = this.getWeather.bind(this);
   }
@@ -25,6 +29,8 @@ class App extends React.Component {
     //   console.log(this.state.weather);
   // });
     console.log(this.state.weather);
+    console.log(this.state.hourlyConditions);
+
   }
 
   componentDidMount() {
@@ -38,6 +44,7 @@ class App extends React.Component {
           <CardContainer mainValue={`${this.state.weather.current.temp}`} description={'temperature'}/>
           <CardContainer mainValue={`${this.state.weather.current.humidity}%`} description={'humidity'}/>
           <CardContainer mainValue={`${this.state.weather.current.uvi}`} description={'UV Index'}/>
+          <CardContainer mainValue={`${this.state.weather.current.weather[0].description}`} description={'conditions'} inputType='Text'/>
         </div>
        
       </div>

@@ -47,6 +47,19 @@ export const Weather = {
         });
         
 
+    },
+
+    getHourly(WeatherObject, parameter) {
+        var object = {};
+        WeatherObject.hourly.forEach(hour => {
+            if (parameter === 'conditions') {
+                object[hour.dt] = hour.weather[0].description;
+            } else {
+                object[hour.dt] = hour[parameter];
+            }
+        })
+        return object;
+        
     }
     
 }
