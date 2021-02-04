@@ -27,19 +27,3 @@
   width: 80%;
   height: auto;
 }
-
-.card-sub-group {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: flex-start;
-  width: 100%;
-}
-
-.card-remaining {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: flex-start;
-  width: 100%;
-}
