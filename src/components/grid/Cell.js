@@ -1,14 +1,13 @@
 import React from 'react'
 import Slug from './Slug'
 import Fade from './Fade'
-import {symptoms} from '../../util/Symptoms'
+import Symptoms from '../content/symptoms'
 
 import './styles.css'
 
 export default class Cell extends React.Component {
     render() {
         const { toggle, name, value, css, active } = this.props
-        const result = symptoms[0].symptoms.map(symptom => <p key={symptom} style={{ width: '100%', height: '100px'}}>{symptom}</p>)
         return (
             <div
             className="cell"
@@ -19,7 +18,7 @@ export default class Cell extends React.Component {
                         <Slug delay={600}>
                         <h1>{value}</h1>
                         <p>{name}</p>
-                        {result}
+                        <Symptoms />
                         </Slug>
                     </div>
                 </Fade>
