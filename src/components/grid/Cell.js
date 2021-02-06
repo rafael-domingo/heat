@@ -7,7 +7,7 @@ import './styles.css'
 export default class Cell extends React.Component {
     render() {
         const { toggle, name, value, css, active } = this.props
-        const result = symptoms[0].symptoms.map(symptom => <p key={symptom}>{symptom}</p>)
+        const result = symptoms[0].symptoms.map(symptom => <p key={symptom} style={{ width: '100%'}}>{symptom}</p>)
         return (
             <div
             className="cell"
@@ -20,7 +20,6 @@ export default class Cell extends React.Component {
                         <p>{name}</p>
                         <div className="sub-details">
                         {result}
-
                         </div>
                         </Slug>
                     </div>
