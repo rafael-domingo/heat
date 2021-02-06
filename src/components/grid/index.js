@@ -18,7 +18,7 @@ export default class GridContainer extends React.Component {
             columns={3}
             margin={30}
             lockScroll={false}
-            closeDelay={100}
+            closeDelay={500}
             config={config.slow}>
                 {(data, active, toggle) => (
                     <Cell {...data} active={active} toggle={toggle}/>
