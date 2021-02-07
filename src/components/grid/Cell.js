@@ -4,6 +4,7 @@ import Fade from './Fade'
 import {symptoms} from '../../util/Symptoms'
 import Symptoms from '../content/symptoms'
 import Default from '../content/default'
+import Hydration from '../content/hydration'
 import './styles.css'
 
 export default class Cell extends React.Component {
@@ -11,6 +12,8 @@ export default class Cell extends React.Component {
         const { toggle, name, value, css, active, hourly } = this.props
         if (hourly.length > 0) {
             var result = <Default hourly={hourly} />
+        } else if (name === 'Hydration') {
+            var result = <Hydration />
         } else {
             var result = <Symptoms symptoms={symptoms} />
         }

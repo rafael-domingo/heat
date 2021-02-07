@@ -57,9 +57,9 @@ class App extends React.Component {
     return (
       <div className="App">
        
-        {/* <div className="header-group">
+        <div className="header-group">
           <h1>HEAT</h1>
-        </div> */}
+        </div>
         <div className="graph-group">
           {/* <GraphContainer data={this.state.graphData} /> */}
           <GridContainer data={data}/>

@@ -87,13 +87,13 @@ export default class Grid extends React.Component {
         const open = this.state.open === key
         console.log(this.state.open);
         return {
-            opacity: this.state.open && !open ? 0 : 1,
+            opacity: this.state.open && !open ? 1 : 1,
             // outerRef comes from measureRef object given by Measure component
             x: open ? this.outerRef.scrollLeft : x,
-            y: open ? this.outerRef.scrollTop : y,
+            y: open ? y : y,
             // this.state.width comes from resize method
             width: open ? this.state.width: width,
-            height: open ? this.state.height : height
+            height: open ? this.state.height: height
         }
     }
 
@@ -120,7 +120,12 @@ export default class Grid extends React.Component {
         let { lastOpen, open, width } = this.state
         let column = 0
         let columnHeights = new Array(columns).fill(0)
-
+        // Adjust container based on mobile
+        if (this.state.width < 450) {
+            columns = 1
+            margin = 0
+            occupySpace = false
+        }
         // Create array to display initial grid of cells
         let displayData = data.map((child, i) => {
             let index = occupySpace ? columnHeights.indexOf(Math.min(...columnHeights)) : column++ % columns // Maximizes the space used if occupySpace is specified
@@ -133,7 +138,7 @@ export default class Grid extends React.Component {
             return {
                 x: margin ? left + offset : left,
                 y: top,
-                width: cellWidth,
+                width: cellWidth > 150 ? cellWidth : 150,
                 height,
                 key: keys(child),
                 object: child
@@ -151,7 +156,7 @@ export default class Grid extends React.Component {
                             ref={measureRef}
                             style={{...styles.outer, ...this.props.style, overflow}}
                             {...rest}
-                            onTouchMove={this.scrollOut}
+                            // onTouchMove={this.scrollOut}
                             onClick={this.scrollOut}>
                                 <Measure
                                     client
@@ -179,7 +184,7 @@ export default class Grid extends React.Component {
                                                                             opacity,
                                                                             width,
                                                                             height,
-                                                                            zIndex: lastOpen === c.key || open === c.key ? 1000: i,
+                                                                            zIndex: lastOpen === c.key || open === c.key ? 5000: 0,
                                                                             transform: interpolate([x, y], (x, y) => `translate3d(${x}px,${y}px, 0)`)
                                                                         }}
                                                                         children={children(c.object, open === c.key, () => this.toggle(c.key))}

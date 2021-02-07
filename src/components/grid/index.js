@@ -19,8 +19,8 @@ export default class GridContainer extends React.Component {
             className="grid"
             data={this.state.data}
             keys={d => d.name}
-            heights={300}
-            columns={3}
+            heights={400}
+            columns={2}
             margin={30}
             lockScroll={false}
             closeDelay={500}
