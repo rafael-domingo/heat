@@ -16,7 +16,8 @@ class App extends React.Component {
     super(props);
     this.state = {
       weather: exampleObject,
-      graphData: Weather.getHourly(exampleObject, 'uvi')
+      graphData: Weather.getHourly(exampleObject, 'uvi'),
+      data: []
     }
     this.getWeather = this.getWeather.bind(this);
     this.changeGraph = this.changeGraph.bind(this);
@@ -31,7 +32,12 @@ class App extends React.Component {
   // });
     console.log(this.state.weather);
     console.log(this.state.hourlyConditions);
-
+    let state = [];
+    state = Weather.constructState(this.state.weather)
+    this.setState(prevState => ({
+      ...prevState,
+      data: state
+    }))
   }
 
   changeGraph(parameter) {
@@ -62,7 +68,7 @@ class App extends React.Component {
         </div>
         <div className="graph-group">
           {/* <GraphContainer data={this.state.graphData} /> */}
-          <GridContainer data={data}/>
+          <GridContainer data={Weather.constructState(this.state.weather)}/>
         </div>
       </div>
     );

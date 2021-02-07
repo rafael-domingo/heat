@@ -24,7 +24,7 @@ export default class Cell extends React.Component {
         } else if (name === 'Heat Stress Symptoms') {
             var result = <Symptoms symptoms={symptoms} />
         } else if (name === 'Risk Level') {
-            var result = <Precautions />
+            var result = <Precautions risk={value}/>
         } else {
             var result = <div></div>
         }
