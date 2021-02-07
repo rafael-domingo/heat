@@ -1,5 +1,11 @@
 export default [
     {
+        name: 'Risk Level',
+        value: 'Moderate',
+        hourly: [],
+        css: 'linear-gradient(to top, #5ee7df 0%, #b490ca 100%)'
+    },
+    {
         name: 'Temperature',
         value: 50,
         hourly: [
@@ -71,7 +77,32 @@ export default [
     {
         name: 'Conditions',
         value: 'Cloudy',
-        hourly: [],
+        hourly: [
+            {
+                time: '12:00PM',
+                id: 800,
+                icon: '01d',
+                description: 'clear'
+            },
+            {
+                time: '1:00PM',
+                id: 804,
+                icon: '04d',
+                description: 'overcast clouds'
+            },
+            {
+                time: '2:00PM',
+                id: 800,
+                icon: '01d',
+                description: 'clear'
+            },
+            {
+                time: '3:00PM',
+                id: 804,
+                icon: '04d',
+                description: 'overcast clouds'
+            }
+        ],
         css: 'linear-gradient(120deg, #f093fb 0%, #f5576c 100%)'
     },
     {
@@ -81,19 +112,13 @@ export default [
         css: 'linear-gradient(-225deg, #E3FDF5 0%, #FFE6FA 100%)'
     },
     {
-        name: 'Precautions',
-        value: 'Click to open',
-        hourly: [],
-        css: 'linear-gradient(to top, #5ee7df 0%, #b490ca 100%)'
-    },
-    {
         name: 'Heat Stress Symptoms',
         value: 'Click to open',
         hourly: [],
         css: 'linear-gradient(to top, #d299c2 0%, #fef9d7 100%)'
     },
     {
-        name: 'First Aid 1',
+        name: 'First Aid',
         value: 'Click to open',
         hourly: [],
         css: 'linear-gradient(to top, #ebc0fd 0%, #d9ded8 100%)'

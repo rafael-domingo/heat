@@ -6,21 +6,36 @@ export default class Hydration extends React.Component {
     render() {
         return (
             <div className="hydration">
-                HYDRATION
+                <div className="hydration-text">
+                    <p style={{width: '100%', color: 'black', fontSize: '2rem'}}>Use the chart below to tell if you're dehydrated based on your urine color</p>
+                </div>
                 <div className="hydration-group">
-                    <div className="hydration-circle" style={{backgroundColor: '#FFFCE6'}}></div>
-                    <div className="hydration-circle" style={{backgroundColor: '#FFF9B8'}}></div>
-                    <div className="hydration-circle" style={{backgroundColor: '#FFF689'}}></div>
+                    <div style={{width: '100%'}}>
+                        <div className="hydration-circle" style={{backgroundColor: '#FFFCE6'}}></div>
+                    </div>
+                    <div style={{width: '100%'}}>
+                        <div className="hydration-circle" style={{backgroundColor: '#FFF9B8'}}></div>
+                    </div>
+                    <div style={{width: '100%'}}>
+                        <div className="hydration-circle" style={{backgroundColor: '#FFF689'}}></div>
+                    </div>
+
                 </div>
                 <div className="hydration-line">
-                    <p style={{width: '100%', color: 'black'}}>Hydrated</p>
+                    <p style={{width: '100%', color: 'black', fontSize: '2rem'}}>Hydrated</p>
                     <span style={{border: '1px solid black', width: '80%'}}></span>
-                    <p style={{width: '100%', color: 'black'}}>Dehydrated</p>
+                    <p style={{width: '100%', color: 'black', fontSize: '2rem'}}>Dehydrated</p>
                 </div>
                 <div className="hydration-group">
-                    <div className='hydration-circle' style={{backgroundColor: '#FFE95B'}}></div>
-                    <div className="hydration-circle" style={{backgroundColor: '#FFDB02'}}></div>
-                    <div className="hydration-circle" style={{backgroundColor: '#E9B511'}}></div>
+                    <div style={{width: '100%'}}>
+                        <div className='hydration-circle' style={{backgroundColor: '#FFE95B'}}></div>
+                    </div>
+                    <div style={{width: '100%'}}>
+                        <div className="hydration-circle" style={{backgroundColor: '#FFDB02'}}></div>
+                    </div>
+                    <div style={{width: '100%'}}>
+                        <div className="hydration-circle" style={{backgroundColor: '#E9B511'}}></div>
+                    </div>                
                 </div>
             </div>
         )

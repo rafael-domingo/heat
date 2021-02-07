@@ -12,7 +12,7 @@ const styles = {
     inner: {
         position: 'relative',
         width: '100%',
-        overflow: 'hidden',
+        overflow: 'auto',
         minHeight: '100%'
     },
     cell: {

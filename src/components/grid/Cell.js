@@ -5,17 +5,28 @@ import {symptoms} from '../../util/Symptoms'
 import Symptoms from '../content/symptoms'
 import Default from '../content/default'
 import Hydration from '../content/hydration'
+import Conditions from '../content/conditions'
+import FirstAid from '../content/firstAid'
+import Precautions from '../content/precautions'
 import './styles.css'
 
 export default class Cell extends React.Component {
     render() {
         const { toggle, name, value, css, active, hourly } = this.props
-        if (hourly.length > 0) {
+        if (name === 'Conditions') {
+            var result = <Conditions hourly={hourly} />
+        } else if (hourly.length > 0) {
             var result = <Default hourly={hourly} />
         } else if (name === 'Hydration') {
             var result = <Hydration />
-        } else {
+        } else if (name === 'First Aid') {
+            var result = <FirstAid symptoms={symptoms} />
+        } else if (name === 'Heat Stress Symptoms') {
             var result = <Symptoms symptoms={symptoms} />
+        } else if (name === 'Risk Level') {
+            var result = <Precautions />
+        } else {
+            var result = <div></div>
         }
         return (
             <div

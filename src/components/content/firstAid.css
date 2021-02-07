@@ -1,4 +1,4 @@
-.symptoms {
+.firstAid {
     display: flex;
     justify-content: center;
     align-items: flex-start;
@@ -7,12 +7,12 @@
     color: black;
 }
 
-.symptoms-header {
+.firstAid-header {
     width: 100%;
     font-size: 30px;
 }
 
-.symptoms-box {
+.firstAid-box {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -22,7 +22,7 @@
     margin: 20px;
 }
 
-.symptoms-list {
+.firstAid-list {
     width: 100%;
     background-color: #FFAAAA;
     border-radius: 20px;
