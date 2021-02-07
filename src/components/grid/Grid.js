@@ -77,7 +77,7 @@ export default class Grid extends React.Component {
     resize = (width, height, props) => 
     this.setState({
         [width]: props.client.width,
-        [height]: props.client.width
+        [height]: props.client.height
     })
     reizeOuter = props => this.resize('widthOuter', 'heightOuter', props)
     resizeInner = props => this.resize('width', 'height', props)
@@ -86,6 +86,8 @@ export default class Grid extends React.Component {
     update = ({ key, x, y, width, height }) => {
         const open = this.state.open === key
         console.log(this.state.open);
+        console.log(this.state.height);
+        console.log(height);
         return {
             opacity: this.state.open && !open ? 1 : 1,
             // outerRef comes from measureRef object given by Measure component
@@ -93,7 +95,7 @@ export default class Grid extends React.Component {
             y: open ? y : y,
             // this.state.width comes from resize method
             width: open ? this.state.width: width,
-            height: open ? this.state.height: height
+            height: open ? 'auto': height
         }
     }
 
@@ -133,7 +135,7 @@ export default class Grid extends React.Component {
             let left = cellWidth * index
             let offset = (index + 1) * margin
             let top = columnHeights[index] + margin
-            let height = typeof heights === 'function' ? heights(child) : heights // TODO: Refactor this later since we'll prob just have a fixed height
+            let height = heights 
             columnHeights[index] += height + margin
             return {
                 x: margin ? left + offset : left,

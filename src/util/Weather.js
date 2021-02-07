@@ -65,7 +65,7 @@ export const Weather = {
         const temperatureObject = {
             name: 'Temperature',
             value: currentTemperature,
-            hourly: hourlyTemperature,
+            hourly: hourlyTemperature.slice(0,11),
             css: 'linear-gradient(to top, #a8edea 0%, #fed6e3 100%)'
         }
 
@@ -84,7 +84,7 @@ export const Weather = {
         const humidityObject = {
             name: 'Humidity',
             value: currentHumidity,
-            hourly: hourlyHumidity,
+            hourly: hourlyHumidity.slice(0,11),
             css: 'linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)'
         }
         console.log(humidityObject);
@@ -104,7 +104,7 @@ export const Weather = {
         const uviObject = {
             name: 'UV Index',
             value: currentUvi,
-            hourly: hourlyUvi,
+            hourly: hourlyUvi.slice(0,11),
             css: 'linear-gradient(120deg, #e0c3fc 0%, #8ec5fc 100%)'
         }
 
@@ -125,7 +125,7 @@ export const Weather = {
         const conditionsObject = {
             name: 'Conditions',
             value: currentCondition[0].description,
-            hourly: hourlyCondition,
+            hourly: hourlyCondition.slice(0,11),
             css: 'linear-gradient(120deg, #f093fb 0%, #f5576c 100%)'
         }
 

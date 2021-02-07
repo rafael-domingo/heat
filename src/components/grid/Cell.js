@@ -8,7 +8,11 @@ import Hydration from '../content/hydration'
 import Conditions from '../content/conditions'
 import FirstAid from '../content/firstAid'
 import Precautions from '../content/precautions'
+
+import { GraphContainer } from '../graph/GraphContainer';
+
 import './styles.css'
+
 
 export default class Cell extends React.Component {
     render() {

@@ -19,9 +19,9 @@ export default class Conditions extends React.Component {
                     <div>
                         {firstTime}
                     </div>
-                    <div>
+                    {/* <div>
                         {firstDescription}
-                    </div>
+                    </div> */}
                     <div>
                         {firstCondition}
                     </div>
