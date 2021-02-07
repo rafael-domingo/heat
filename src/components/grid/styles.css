@@ -52,7 +52,7 @@
   .details h1 {
     color: #ca6a9a;
     font-size: 18px;
-    line-height: 18px;
+    line-height: 1rem;
     font-weight: 600;
     margin: 0;
     padding: 0;
@@ -65,8 +65,8 @@
   
   .details h2 {
     color: #777777;
-    font-size: 14px;
-    line-height: 14px;
+    font-size: 1rem;
+    line-height: 1rem;
     margin: 0;
     position: relative;
     width: 100%;

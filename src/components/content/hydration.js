@@ -7,7 +7,7 @@ export default class Hydration extends React.Component {
         return (
             <div className="hydration">
                 <div className="hydration-text">
-                    <p style={{width: '100%', color: 'black', fontSize: '2rem'}}>Use the chart below to tell if you're dehydrated based on your urine color</p>
+                    <p style={{width: '100%', color: 'black', fontSize: '1rem', lineHeight: '1rem'}}>Use the chart below to tell if you're dehydrated based on your urine color</p>
                 </div>
                 <div className="hydration-group">
                     <div style={{width: '100%'}}>
@@ -22,9 +22,9 @@ export default class Hydration extends React.Component {
 
                 </div>
                 <div className="hydration-line">
-                    <p style={{width: '100%', color: 'black', fontSize: '2rem'}}>Hydrated</p>
+                    <p style={{width: '100%', color: 'black', fontSize: '1rem'}}>Hydrated</p>
                     <span style={{border: '1px solid black', width: '80%'}}></span>
-                    <p style={{width: '100%', color: 'black', fontSize: '2rem'}}>Dehydrated</p>
+                    <p style={{width: '100%', color: 'black', fontSize: '1rem'}}>Dehydrated</p>
                 </div>
                 <div className="hydration-group">
                     <div style={{width: '100%'}}>
