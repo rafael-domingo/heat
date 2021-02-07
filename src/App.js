@@ -5,12 +5,10 @@ import { Spring } from 'react-spring/renderprops';
 // Import Utilities
 import { Weather } from './util/Weather';
 import { exampleObject } from './util/exampleObject';
+import data from './components/grid/data';
 
 // Import Components 
-import { CardContainer } from './components/card/CardContainer';
 import { GraphContainer } from './components/graph/GraphContainer';
-import { Card } from './components/card/Card';
-
 import GridContainer from './components/grid/index';
 
 class App extends React.Component {
@@ -18,52 +16,6 @@ class App extends React.Component {
     super(props);
     this.state = {
       weather: exampleObject,
-      hourlyData: [
-        {
-          hourlyTemp: Weather.getHourly(exampleObject, 'temp'),
-        },
-        {
-          hourlyUvi: Weather.getHourly(exampleObject, 'uvi'),
-        },
-        {
-          hourlyHumidity: Weather.getHourly(exampleObject, 'humidity'),
-        },
-        {
-          hourlyConditions: Weather.getHourly(exampleObject, 'conditions'),
-        },
-        {
-
-        }
-      ],
-      cardData: [
-        {
-          'temperature': exampleObject.current.temp
-        },
-        {
-          'humidity': exampleObject.current.humidity
-        },
-        {
-          'uvi': exampleObject.current.uvi
-        },
-        {
-          'conditions': exampleObject.current.weather[0].description
-        },
-        {
-          'hydration': 'text'
-        },
-        {
-          'Work:Rest Ratio': 'text'
-        },
-        {
-          'Precautions': 'text'
-        },
-        {
-          'Heat Stress Symptoms': 'text'
-        },
-        {
-          'First Aid': 'text'
-        }
-      ],
       graphData: Weather.getHourly(exampleObject, 'uvi')
     }
     this.getWeather = this.getWeather.bind(this);
@@ -109,24 +61,9 @@ class App extends React.Component {
           <h1>HEAT</h1>
         </div> */}
         <div className="graph-group">
-          <GraphContainer data={this.state.graphData} />
-          <GridContainer />
-
+          {/* <GraphContainer data={this.state.graphData} /> */}
+          <GridContainer data={data}/>
         </div>
-        {/* <Spring
-          from={{ opacity: 0}}
-          to={{ opacity: 1}}
-          config={{ duration: 1000}}
-          >
-          {props => 
-              <div className="card-group" style={props}>
-                <CardContainer cardData={this.state.cardData} />
-              </div>
-          }
-        </Spring> */}
-
-    
-       
       </div>
     );
   }

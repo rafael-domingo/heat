@@ -2,11 +2,16 @@ import React from 'react'
 import { config } from 'react-spring/renderprops'
 import Grid from "./Grid";
 import Cell from './Cell'
-import data from './data'
+// import data from './data'
 import './styles.css'
 
 export default class GridContainer extends React.Component {
-    state = { data } 
+    constructor(props) {
+        super(props);
+        this.state = {
+            data: this.props.data
+        }
+    }
     
     render() {
         return (

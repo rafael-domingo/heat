@@ -1,13 +1,19 @@
 import React from 'react'
 import Slug from './Slug'
 import Fade from './Fade'
+import {symptoms} from '../../util/Symptoms'
 import Symptoms from '../content/symptoms'
-
+import Default from '../content/default'
 import './styles.css'
 
 export default class Cell extends React.Component {
     render() {
-        const { toggle, name, value, css, active } = this.props
+        const { toggle, name, value, css, active, hourly } = this.props
+        if (hourly.length > 0) {
+            var result = <Default hourly={hourly} />
+        } else {
+            var result = <Symptoms symptoms={symptoms} />
+        }
         return (
             <div
             className="cell"
@@ -16,9 +22,8 @@ export default class Cell extends React.Component {
                 <Fade show={active} delay={active ? 500 : 0}>
                     <div className="details">
                         <Slug delay={600}>
-                        <h1>{value}</h1>
-                        <p>{name}</p>
-                        <Symptoms />
+                        <h2>{name}</h2>
+                        {result}
                         </Slug>
                     </div>
                 </Fade>
