@@ -25,9 +25,17 @@ export default class Search extends React.Component {
     render() {
         return (
             <div>
-                <input placeholder="Search for a city" onChange={this.handleTermChange} />
+                <div class="form">
+                    <input name="city" type="text" onChange={this.handleTermChange} required/>
+                    <label for="city" class="label-name">
+                        <span className="content-name">Search for a city</span>
+                    </label>
+                </div>
                 <button onClick={this.search}>Search</button>
+
             </div>
+          
+
         )
     }
 }

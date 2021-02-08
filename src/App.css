@@ -8,9 +8,9 @@
 }
 
 .header-group {
-  width: 80%;
-  height: auto;
-  border: 1px solid black;
+  width: 50%;
+  height: 100%;
+  /* border: 1px solid black; */
   font-size: 2em;
 }
 

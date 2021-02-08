@@ -79,8 +79,8 @@ class App extends React.Component {
       <div className="App">
         <div className="header-group">
           <h1>HEAT</h1>
+          <Search search={this.search}/>
         </div>
-        <Search search={this.search}/>
         <div className="graph-group">
           {/* <GraphContainer data={this.state.graphData} /> */}
           <GridContainer data={this.state.data}/>
