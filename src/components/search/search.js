@@ -35,8 +35,6 @@ export default class Search extends React.Component {
                         <span className="content-name">Search for a city</span>
                     </label>
                 </div>
-                <button onClick={this.search}>Search</button>
-
             </div>
           
 

@@ -61,12 +61,12 @@ export const Weather = {
             const time = `${hours}:00 ${ampm}`
             return {
                 time: time,
-                value: hour.temp
+                value: `${hour.temp}F`
             }
         })
         const temperatureObject = {
             name: 'Temperature',
-            value: currentTemperature,
+            value: `${currentTemperature}F`,
             hourly: hourlyTemperature.slice(0,11),
             css: 'linear-gradient(to top, #a8edea 0%, #fed6e3 100%)'
         }
@@ -84,12 +84,12 @@ export const Weather = {
             const time = `${hours}:00 ${ampm}`
             return {
                 time: time,
-                value: hour.humidity
+                value: `${hour.humidity}%`
             }
         })
         const humidityObject = {
             name: 'Humidity',
-            value: currentHumidity,
+            value: `${currentHumidity}%`,
             hourly: hourlyHumidity.slice(0,11),
             css: 'linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)'
         }

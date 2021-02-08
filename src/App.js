@@ -66,7 +66,7 @@ class App extends React.Component {
 
 
   componentDidMount() {
-    window.addEventListener('load', this.getWeather(''));
+    // window.addEventListener('load', this.getWeather(''));
   }
 
   search(term) {
