@@ -52,9 +52,13 @@ export const Weather = {
         const currentTemperature = WeatherObject.current.temp;
         const hourlyTemperature = WeatherObject.hourly.map(hour => {
             const date = new Date(hour.dt * 1000);
-            const hours = date.getHours();
-            const minutes = "0" + date.getMinutes();
-            const time = hours + minutes.substr(-2);
+            let hours = date.getHours();
+            let ampm = "am"
+            if (hours > 12) {
+                hours -= 12
+                ampm = "pm"
+            }
+            const time = `${hours}:00 ${ampm}`
             return {
                 time: time,
                 value: hour.temp
@@ -71,9 +75,13 @@ export const Weather = {
         const currentHumidity = WeatherObject.current.humidity;
         const hourlyHumidity = WeatherObject.hourly.map(hour => {
             const date = new Date(hour.dt * 1000);
-            const hours = date.getHours();
-            const minutes = "0" + date.getMinutes();
-            const time = hours + minutes.substr(-2);
+            let hours = date.getHours();
+            let ampm = "am"
+            if (hours > 12) {
+                hours -= 12
+                ampm = "pm"
+            }
+            const time = `${hours}:00 ${ampm}`
             return {
                 time: time,
                 value: hour.humidity
@@ -90,9 +98,13 @@ export const Weather = {
         const currentUvi = WeatherObject.current.uvi;
         const hourlyUvi = WeatherObject.hourly.map(hour => {
             const date = new Date(hour.dt * 1000);
-            const hours = date.getHours();
-            const minutes = "0" + date.getMinutes();
-            const time = hours + minutes.substr(-2);
+            let hours = date.getHours();
+            let ampm = "am"
+            if (hours > 12) {
+                hours -= 12
+                ampm = "pm"
+            }
+            const time = `${hours}:00 ${ampm}`
             return {
                 time: time,
                 value: hour.uvi
@@ -109,9 +121,13 @@ export const Weather = {
         const currentCondition = WeatherObject.current.weather;
         const hourlyCondition = WeatherObject.hourly.map(hour => {
             const date = new Date(hour.dt * 1000);
-            const hours = date.getHours();
-            const minutes = "0" + date.getMinutes();
-            const time = hours + minutes.substr(-2);
+            let hours = date.getHours();
+            let ampm = "am"
+            if (hours > 12) {
+                hours -= 12
+                ampm = "pm"
+            }
+            const time = `${hours}:00 ${ampm}`
             return {
                 time: time,
                 id: hour.weather[0].id,
