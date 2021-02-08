@@ -6,7 +6,6 @@ export class GraphContainer extends React.Component {
 
     render() {
         var array = []
-        console.log(this.props.data)
         this.props.data.forEach(hour => {
             var object = {
                 time: hour.value

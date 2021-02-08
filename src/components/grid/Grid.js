@@ -59,9 +59,6 @@ export default class Grid extends React.Component {
 
     // Toggles state based on clicking cell 
     toggle = key => {
-        // if (!this.state.open) {
-        //     console.log(this.outerRef)
-        // }
         return (
             this.setState(
                 state => ({
@@ -85,9 +82,6 @@ export default class Grid extends React.Component {
     // Update method gets called everytime and assigns value based on open state
     update = ({ key, x, y, width, height }) => {
         const open = this.state.open === key
-        console.log(this.state.open);
-        console.log(this.state.height);
-        console.log(height);
         return {
             opacity: this.state.open && !open ? 1 : 1,
             // outerRef comes from measureRef object given by Measure component

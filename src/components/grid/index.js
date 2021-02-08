@@ -9,15 +9,22 @@ export default class GridContainer extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            data: this.props.data
+            data: []
         }
     }
+
+    updateState() {
+        this.setState({data: this.props.data})
+    }
     
+    componentDidMount() {
+        window.addEventListener('load', this.updateState())
+    }
     render() {
         return (
             <Grid
             className="grid"
-            data={this.state.data}
+            data={this.props.data}
             keys={d => d.name}
             heights={400}
             columns={2}

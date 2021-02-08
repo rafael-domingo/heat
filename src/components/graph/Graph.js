@@ -6,7 +6,6 @@ import {  LineChart, Line, ResponsiveContainer, Tooltip, LabelList } from 'recha
 
 export class Graph extends React.Component {
     render() {
-        console.log(this.props.data);
         return (
             <div>
             <ResponsiveContainer width="100%" height={500}>

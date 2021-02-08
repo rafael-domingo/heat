@@ -22,7 +22,6 @@ export const Weather = {
                 console.log('No jsonResponse');
                 return [];
             }
-            console.log(jsonResponse.coord);
             return jsonResponse.coord;
         })
     },
@@ -30,7 +29,7 @@ export const Weather = {
     getWeather(location) {
         return Weather.getCoordinates(location).then(coordinates => {
             // One Call API
-            return fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&exclude={minutely,daily,alerts}&appid=${apiKey}`).then(response => {
+            return fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&units=imperial&exclude={minutely,daily,alerts}&appid=${apiKey}`).then(response => {
                 if(!response) {
                     console.log('No response from API');
                     return [];
@@ -41,7 +40,6 @@ export const Weather = {
                     console.log('No jsonResponse');
                     return [];
                 }
-                console.log(jsonResponse);
                 return jsonResponse;
             })
         });
@@ -87,7 +85,6 @@ export const Weather = {
             hourly: hourlyHumidity.slice(0,11),
             css: 'linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)'
         }
-        console.log(humidityObject);
 
         // UV Index object
         const currentUvi = WeatherObject.current.uvi;
@@ -172,7 +169,6 @@ export const Weather = {
         }
 
         const state = [riskObject, temperatureObject, humidityObject, uviObject, conditionsObject, hydrationObject, symptomsObject, firstAidObject]
-        console.log(state);
         return state
     },
 
