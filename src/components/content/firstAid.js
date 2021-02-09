@@ -4,10 +4,10 @@ import './firstAid.css'
 export default class FirstAid extends React.Component {
     
     render() {
-        const heatStroke = this.props.symptoms[0].firstAid.map(item => <p style={{lineHeight: '30px'}}>{item}</p>)
-        const heatExhaustion = this.props.symptoms[1].firstAid.map(item => <p style={{lineHeight: '30px'}}>{item}</p>)
-        const heatCramps = this.props.symptoms[2].firstAid.map(item => <p style={{lineHeight: '30px'}}>{item}</p>)
-        const heatRash = this.props.symptoms[3].firstAid.map(item => <p style={{lineHeight: '30px'}}>{item}</p>)
+        const heatStroke = this.props.symptoms[0].firstAid.map((item, id) => <p key={`${this.props.name}${item}${id}`} style={{lineHeight: '30px'}}>{item}</p>)
+        const heatExhaustion = this.props.symptoms[1].firstAid.map((item, id) => <p key={`${this.props.name}${item}${id}`} style={{lineHeight: '30px'}}>{item}</p>)
+        const heatCramps = this.props.symptoms[2].firstAid.map((item, id) => <p key={`${this.props.name}${item}${id}`} style={{lineHeight: '30px'}}>{item}</p>)
+        const heatRash = this.props.symptoms[3].firstAid.map((item, id) => <p key={`${this.props.name}${item}${id}`} style={{lineHeight: '30px'}}>{item}</p>)
         return (
             <div className="firstAid">
                 <div className="firstAid-header">

@@ -146,11 +146,11 @@ export const Weather = {
         if (currentTemperature < 91) {
             var currentRisk = 'Lower'
         } else if (currentTemperature < 103) {
-            var currentRisk = 'Moderate'
+            currentRisk = 'Moderate'
         } else if (currentTemperature < 115) {
-            var currentRisk = 'High'
+            currentRisk = 'High'
         } else {
-            var currentRisk = 'Extreme'
+            currentRisk = 'Extreme'
         }
 
         const riskObject = {
@@ -186,23 +186,7 @@ export const Weather = {
 
         const state = [riskObject, temperatureObject, humidityObject, uviObject, conditionsObject, hydrationObject, symptomsObject, firstAidObject]
         return state
-    },
-
-    getHourly(WeatherObject, parameter) {
-        var array = [];
-        WeatherObject.hourly.forEach(hour => {
-            var time = hour.dt;
-            var object = {
-                time: hour[parameter]
-            }
-            if (parameter === 'conditions') {
-                array.push(object);
-            } else {
-                array.push(object);
-            }
-        })
-        return array;
-        
     }
+
     
 }

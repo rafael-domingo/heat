@@ -9,8 +9,6 @@ import Conditions from '../content/conditions'
 import FirstAid from '../content/firstAid'
 import Precautions from '../content/precautions'
 
-import { GraphContainer } from '../graph/GraphContainer';
-
 import './styles.css'
 
 
@@ -18,19 +16,19 @@ export default class Cell extends React.Component {
     render() {
         const { toggle, name, value, css, active, hourly } = this.props
         if (name === 'Conditions') {
-            var result = <Conditions hourly={hourly} />
+            var result = <Conditions hourly={hourly} name={name}/>
         } else if (hourly.length > 0) {
-            var result = <Default hourly={hourly} />
+            result = <Default hourly={hourly} name={name}/>
         } else if (name === 'Hydration') {
-            var result = <Hydration />
+            result = <Hydration />
         } else if (name === 'First Aid') {
-            var result = <FirstAid symptoms={symptoms} />
+            result = <FirstAid symptoms={symptoms} name={name}/>
         } else if (name === 'Heat Stress Symptoms') {
-            var result = <Symptoms symptoms={symptoms} />
+            result = <Symptoms symptoms={symptoms} name={name}/>
         } else if (name === 'Risk Level') {
-            var result = <Precautions risk={value}/>
+            result = <Precautions risk={value}/>
         } else {
-            var result = <div></div>
+            result = <div></div>
         }
         return (
             <div

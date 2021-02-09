@@ -1,5 +1,5 @@
 import React from 'react'
-import { Transition, Trail, animated } from 'react-spring/renderprops'
+import { Trail, animated } from 'react-spring/renderprops'
 
 export default class Slug extends React.PureComponent {
     render() {

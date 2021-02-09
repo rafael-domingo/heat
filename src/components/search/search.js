@@ -15,7 +15,6 @@ export default class Search extends React.Component {
         // check if enter is key entered
         if (e.keyCode === 13) {
             this.props.search(this.state.term);
-            console.log(this.state.term)
         }
         this.props.renderGrid(true);
         
@@ -26,13 +25,12 @@ export default class Search extends React.Component {
             term: e.target.value
         })
         this.props.renderGrid(false);
-        console.log(e.target.value)
     }
     render() {
         return (
-                <div class="form">
+                <div className="form">
                     <input name="city" type="text" onChange={this.handleTermChange} onKeyDown={this.search} required/>
-                    <label for="city" class="label-name">
+                    <label htmlFor="city" className="label-name">
                         <span className="content-name">Search for a city</span>
                     </label>
                 </div>

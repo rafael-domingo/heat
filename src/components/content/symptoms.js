@@ -4,10 +4,10 @@ import './symptoms.css';
 export default class Symptoms extends React.Component {
     
     render() {
-        const heatStroke = this.props.symptoms[0].symptoms.map(item => <p style={{lineHeight: '1rem'}}>{item}</p>)
-        const heatExhaustion = this.props.symptoms[1].symptoms.map(item => <p style={{lineHeight: '1rem'}}>{item}</p>)
-        const heatCramps = this.props.symptoms[2].symptoms.map(item => <p style={{lineHeight: '1rem'}}>{item}</p>)
-        const heatRash = this.props.symptoms[3].symptoms.map(item => <p style={{lineHeight: '1rem'}}>{item}</p>)
+        const heatStroke = this.props.symptoms[0].symptoms.map((item, id) => <p key={`${this.props.name}${item}${id}`} style={{lineHeight: '1rem'}}>{item}</p>)
+        const heatExhaustion = this.props.symptoms[1].symptoms.map((item, id) => <p key={`${this.props.name}${item}${id}`} style={{lineHeight: '1rem'}}>{item}</p>)
+        const heatCramps = this.props.symptoms[2].symptoms.map((item, id) => <p key={`${this.props.name}${item}${id}`} style={{lineHeight: '1rem'}}>{item}</p>)
+        const heatRash = this.props.symptoms[3].symptoms.map((item, id) => <p key={`${this.props.name}${item}${id}`} style={{lineHeight: '1rem'}}>{item}</p>)
         return (
             <div className="symptoms">
                 <div className="symptoms-header">
