@@ -12,11 +12,11 @@ export default class Search extends React.Component {
     }
 
     search(e) {
-        // check if enter is key entered
-        if (e.keyCode === 13) {
+        // check if enter is key entered and string is not empty
+        if (e.keyCode === 13 && this.state.term.length > 0) {
             this.props.search(this.state.term);
+            this.props.renderGrid(true);
         }
-        this.props.renderGrid(true);
         
     }
 
