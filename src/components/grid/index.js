@@ -21,22 +21,27 @@ export default class GridContainer extends React.Component {
         window.addEventListener('load', this.updateState())
     }
     render() {
-        return (
-            <Grid
-            className="grid"
-            data={this.props.data}
-            keys={d => d.name}
-            heights={400}
-            columns={2}
-            margin={30}
-            lockScroll={false}
-            closeDelay={500}
-            config={config.slow}>
-                {(data, active, toggle) => (
-                    <Cell {...data} active={active} toggle={toggle}/>
-                )}  
-
-            </Grid>
-        )
+        if (this.props.render) {
+            return (
+                <Grid
+                className="grid"
+                data={this.props.data}
+                keys={d => d.name}
+                heights={400}
+                columns={2}
+                margin={30}
+                lockScroll={false}
+                closeDelay={500}
+                config={config.slow}>
+                    {(data, active, toggle) => (
+                        <Cell {...data} active={active} toggle={toggle}/>
+                    )}  
+    
+                </Grid>
+            )
+        } else {
+            return <div></div>
+        }
+    
     }
 }

@@ -11,6 +11,7 @@ import data from './components/grid/data';
 import { GraphContainer } from './components/graph/GraphContainer';
 import GridContainer from './components/grid/index';
 import Search from './components/search/search';
+import Logo from './components/logo/logo';
 
 class App extends React.Component {
   constructor(props) {
@@ -18,11 +19,13 @@ class App extends React.Component {
     this.state = {
       weather: exampleObject,
       graphData: Weather.getHourly(exampleObject, 'uvi'),
-      data: []
+      data: [],
+      renderGrid: false
     }
     this.getWeather = this.getWeather.bind(this);
     this.changeGraph = this.changeGraph.bind(this);
     this.search = this.search.bind(this);
+    this.renderGrid = this.renderGrid.bind(this);
   }
   
   getWeather(term) {
@@ -64,6 +67,11 @@ class App extends React.Component {
     }));
   }
 
+  renderGrid(input) {
+    this.setState({renderGrid: input});
+    console.log(this.state.renderGrid);
+  }
+
 
   componentDidMount() {
     // window.addEventListener('load', this.getWeather(''));
@@ -78,12 +86,12 @@ class App extends React.Component {
     return (
       <div className="App">
         <div className="header-group">
-          <h1>HEAT</h1>
-          <Search search={this.search}/>
+          <Logo />
+          <Search search={this.search} renderGrid={this.renderGrid}/>
         </div>
         <div className="graph-group">
           {/* <GraphContainer data={this.state.graphData} /> */}
-          <GridContainer data={this.state.data}/>
+          <GridContainer data={this.state.data} render={this.state.renderGrid}/>
         </div>
       </div>
     );

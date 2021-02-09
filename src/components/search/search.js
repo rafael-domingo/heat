@@ -17,6 +17,7 @@ export default class Search extends React.Component {
             this.props.search(this.state.term);
             console.log(this.state.term)
         }
+        this.props.renderGrid(true);
         
     }
 
@@ -24,18 +25,17 @@ export default class Search extends React.Component {
         this.setState({
             term: e.target.value
         })
+        this.props.renderGrid(false);
         console.log(e.target.value)
     }
     render() {
         return (
-            <div>
                 <div class="form">
                     <input name="city" type="text" onChange={this.handleTermChange} onKeyDown={this.search} required/>
                     <label for="city" class="label-name">
                         <span className="content-name">Search for a city</span>
                     </label>
                 </div>
-            </div>
           
 
         )

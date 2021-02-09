@@ -44,7 +44,7 @@ export default class Grid extends React.Component {
 
     // Default state of the unopened cell
     // TODO: Try to refactor this to the old way to set state via constructor, see if it still works
-    state = { width: 0, height: 0, open: undefined, lastOpen: undefined}
+    state = { width: 0, height: 0, open: undefined, lastOpen: undefined, data: this.props.data}
 
     // -------------------------
     // Methods to adjust state based on user input
@@ -99,6 +99,7 @@ export default class Grid extends React.Component {
     }
 
     render() {
+        
         let {
             children, 
             columns,

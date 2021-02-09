@@ -8,12 +8,17 @@
 }
 
 .header-group {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
   width: 80%;
   height: 100%;
   /* border: 1px solid black; */
   font-size: 2em;
   text-align: center;
   color: #595f6e;
+  margin: 50px;
 }
 
 .graph-group {
