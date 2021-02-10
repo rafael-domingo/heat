@@ -3,7 +3,7 @@ import './conditions.css';
 
 export default class Conditions extends React.Component {
     render() {
-        const conditions = this.props.hourly.map((hourly, id) => <img key={`${this.props.name}image${id}`} src={`http://openweathermap.org/img/wn/${hourly.icon}@2x.png`} style={{ width: '100%', height: '100%'}}/>)
+        const conditions = this.props.hourly.map((hourly, id) => <img alt='conditions' key={`${this.props.name}image${id}`} src={`http://openweathermap.org/img/wn/${hourly.icon}@2x.png`} style={{ width: '100%', height: '100%'}}/>)
         const firstCondition = conditions[0]
         // const remainingConditions = conditions.slice(1)
         const times = this.props.hourly.map((hourly, id) => <p key={`${this.props.name}${hourly.time}`} style={{ width: '100%', height: '100%', lineHeight: '20px'}}>{hourly.time}</p>)

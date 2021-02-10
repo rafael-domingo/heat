@@ -22,14 +22,18 @@ export const Weather = {
                 console.log('No jsonResponse');
                 return [];
             }
+            console.log(jsonResponse.coord)
             return jsonResponse.coord;
         })
     },
 
     getWeather(location) {
         return Weather.getCoordinates(location).then(coordinates => {
-            // One Call API
-            return fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&units=imperial&exclude={minutely,daily,alerts}&appid=${apiKey}`).then(response => {
+            if (!coordinates) {
+                return null;
+            } else {
+                // One call API
+                return fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&units=imperial&exclude={minutely,daily,alerts}&appid=${apiKey}`).then(response => {
                 if(!response) {
                     console.log('No response from API');
                     return [];
@@ -42,6 +46,8 @@ export const Weather = {
                 }
                 return jsonResponse;
             })
+            }
+            
         });
         
 
