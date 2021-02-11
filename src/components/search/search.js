@@ -1,13 +1,14 @@
 import React from 'react';
 import './search.css';
 
-
 export default class Search extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             term: '',
-            error: ''
+            error: '',
+            filteredOptions: [],
+            showOptions: false
         }
         this.search = this.search.bind(this);
         this.handleTermChange = this.handleTermChange.bind(this);
@@ -37,13 +38,37 @@ export default class Search extends React.Component {
         
     }
 
+    // Fetch list of cities to compare against search
+    autoComplete() {
+        return fetch('./CityList.json', {
+            headers: {
+                'Content-type': 'application/json',
+                'Accept': 'application/json'
+            }
+        }).then(response => {
+            return response.json();
+        }).then(jsonResponse => {
+            return jsonResponse;
+        })
+    }
+
     handleTermChange(e) {
-        this.setState(prevState => ({
-            ...prevState,
-            term: e.target.value,
-            error: ''
-        }))
+        // Check input versus list of cities to populate autocomplete list
+        this.autoComplete().then(list => {
+            var userInput = e.target.value;
+            var cityList = list.filter(option => option.name.toLowerCase().indexOf(userInput.toLowerCase()) > -1);
+            console.log(cityList);
+            var cityListArray = cityList.map(city => <p>{city.name}</p>);
+            this.setState(prevState => ({
+                ...prevState,
+                term: e.target.value,
+                error: '',
+                filteredOptions: cityListArray
+            }))
+        })
+       
         this.props.render(false);
+        
     }
     render() {
         return (
@@ -54,7 +79,8 @@ export default class Search extends React.Component {
                     <span className="content-name" style={{opacity: !this.props.error ? 1 : 0}}>Search for a city</span>
                 </label>
             </div>
-                <p style={{opacity: !this.props.error ? 0 : 1, textAlign: 'left'}}>{this.state.error}</p>
+                {/* <p style={{opacity: !this.props.error ? 0 : 1, textAlign: 'left'}}>{this.state.error}</p> */}
+                <div>{this.state.filteredOptions}</div>
             </div>
      
           
