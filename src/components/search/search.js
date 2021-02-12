@@ -1,6 +1,8 @@
 import React from 'react';
 import './search.css';
 
+import SearchResults from './searchResults';
+
 export default class Search extends React.Component {
     constructor(props) {
         super(props);
@@ -14,29 +16,15 @@ export default class Search extends React.Component {
         this.handleTermChange = this.handleTermChange.bind(this);
     }
 
-    search(e) {
+    search(input) {
         // TODO: refactor this to search when selecting city from list
-
-        if (e.keyCode === 13 && this.state.term.length > 0) {
-            this.props.search(this.state.term);
-            this.props.render(true);
-            this.setState(prevState => ({
-                ...prevState,
-                showOptions: false
-            }));
-        } else if (e.keyCode === 13 && this.state.term.length === 0) {
-            this.setState(prevState => ({
-                ...prevState,
-                showOptions: true
-            }))
-            this.props.render(false);
-        } else {
-            this.setState(prevState => ({
-                ...prevState,
-                showOptions: true
-            }))
-        }
-        
+        console.log(input);
+        this.props.search(input);
+        this.setState(prevState => ({
+            ...prevState,
+            showOptions: false
+        }));
+    
     }
 
     // Fetch list of cities to compare against search
@@ -58,21 +46,23 @@ export default class Search extends React.Component {
     handleTermChange(e) {
         // Check input versus list of cities to populate autocomplete list
         if (e.target.value.indexOf(' ') !== 0) {
-            if (e.target.value.length > 1 || e.target.value.indexOf(' ') >= 1) {
+            if (e.target.value.length > 10 || e.target.value.indexOf(' ') >= 1) {
                 var userInput = e.target.value;
                 var list = this.state.cityList.filter(option => option.name.toLowerCase().indexOf(userInput.toLowerCase()) > -1);
-                var cityListArray = list.map(city => <p>{city.name}</p>);
+                console.log(list);
                 this.setState(prevState => ({
                     ...prevState,
                     term: e.target.value,
-                    filteredOptions: cityListArray
+                    filteredOptions: list,
+                    showOptions: true
                 }))
             } else {
                 // TODO: clean up these if/else statements
                 this.setState(prevState => ({
                     ...prevState,
                     term: e.target.value,
-                    filteredOptions: []
+                    filteredOptions: [],
+                    showOptions: true
                 }))
                 this.props.render(false);
             }            
@@ -80,7 +70,8 @@ export default class Search extends React.Component {
             this.setState(prevState => ({
                 ...prevState,
                 term: e.target.value,
-                filteredOptions: []
+                filteredOptions: [],
+                showOptions: true
             }))
             this.props.render(false);
         } 
@@ -94,12 +85,15 @@ export default class Search extends React.Component {
         return (
             <div className="container-form">
            <div className="form">
-                <input name="city" type="text" onChange={this.handleTermChange} onKeyDown={this.search} required/>
+                <input name="city" type="text" onChange={this.handleTermChange} required/>
                 <label htmlFor="city" className="label-name">
                     <span className="content-name">Search for a city</span>
                 </label>
             </div>
-                <div style={{display: this.state.showOptions ? "block" : "none"}}>{this.state.filteredOptions}</div>
+            <div style={{display: this.state.showOptions ? 'flex' : 'none', width: '100%'}}>
+                <SearchResults list={this.state.filteredOptions} search={this.search}/>
+
+            </div>
             </div>
      
           
