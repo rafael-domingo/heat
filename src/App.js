@@ -17,8 +17,7 @@ class App extends React.Component {
     this.state = {
       weather: exampleObject,
       data: [],
-      renderGrid: false,
-      error: null
+      renderGrid: false
     }
     this.getWeather = this.getWeather.bind(this);
     this.search = this.search.bind(this);
@@ -30,8 +29,7 @@ class App extends React.Component {
       if (weatherObject) {
         this.setState(prevState => ({
           ...prevState,
-          data: Weather.constructState(weatherObject),
-          error: null
+          data: Weather.constructState(weatherObject)
         }))
         this.renderGrid(true)
         console.log('succes')
@@ -39,26 +37,19 @@ class App extends React.Component {
         console.log('error')
         this.setState(prevState => ({
           ...prevState,
-          weatherObject: [],
-          error: `Hmm, looks like that city doesn't exist.`
-        }))
+          weatherObject: []
+      }))
         this.renderGrid(false)
       }
 
   });
   }
 
-
   renderGrid(input) {
     this.setState(prevState => ({
       ...prevState,
       renderGrid: input
     }));
-  }
-
-
-  componentDidMount() {
-    // window.addEventListener('load', this.getWeather(''));
   }
 
   search(term) {
@@ -70,7 +61,7 @@ class App extends React.Component {
       <div className="App">
         <div className="header-group">
           <Logo />
-          <Search search={this.search} error={this.state.error} render={this.renderGrid}/>
+          <Search search={this.search} render={this.renderGrid}/>
         </div>
         <div className="graph-group">
           <GridContainer data={this.state.data} render={this.state.renderGrid}/>

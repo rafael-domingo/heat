@@ -6,10 +6,9 @@ export default class Search extends React.Component {
         super(props);
         this.state = {
             term: '',
-            error: '',
             cityList: [],
             filteredOptions: [],
-            showOptions: false
+            showOptions: true
         }
         this.search = this.search.bind(this);
         this.handleTermChange = this.handleTermChange.bind(this);
@@ -21,22 +20,20 @@ export default class Search extends React.Component {
         if (e.keyCode === 13 && this.state.term.length > 0) {
             this.props.search(this.state.term);
             this.props.render(true);
-            console.log(this.props.error);
             this.setState(prevState => ({
                 ...prevState,
-                error: this.props.error
+                showOptions: false
             }));
         } else if (e.keyCode === 13 && this.state.term.length === 0) {
             this.setState(prevState => ({
                 ...prevState,
-                valid: false,
-                error: 'enter a city name'
+                showOptions: true
             }))
             this.props.render(false);
         } else {
             this.setState(prevState => ({
                 ...prevState,
-                error: ''
+                showOptions: true
             }))
         }
         
@@ -68,7 +65,6 @@ export default class Search extends React.Component {
                 this.setState(prevState => ({
                     ...prevState,
                     term: e.target.value,
-                    error: '',
                     filteredOptions: cityListArray
                 }))
             } else {
@@ -76,7 +72,6 @@ export default class Search extends React.Component {
                 this.setState(prevState => ({
                     ...prevState,
                     term: e.target.value,
-                    error: '',
                     filteredOptions: []
                 }))
                 this.props.render(false);
@@ -85,7 +80,6 @@ export default class Search extends React.Component {
             this.setState(prevState => ({
                 ...prevState,
                 term: e.target.value,
-                error: '',
                 filteredOptions: []
             }))
             this.props.render(false);
@@ -105,8 +99,7 @@ export default class Search extends React.Component {
                     <span className="content-name">Search for a city</span>
                 </label>
             </div>
-                {/* <p style={{opacity: !this.props.error ? 0 : 1, textAlign: 'left'}}>{this.state.error}</p> */}
-                <div>{this.state.filteredOptions}</div>
+                <div style={{display: this.state.showOptions ? "block" : "none"}}>{this.state.filteredOptions}</div>
             </div>
      
           
