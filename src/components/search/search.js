@@ -14,6 +14,7 @@ export default class Search extends React.Component {
         }
         this.search = this.search.bind(this);
         this.handleTermChange = this.handleTermChange.bind(this);
+        this.setList = this.setList.bind(this);
     }
 
     search(input) {
@@ -43,17 +44,25 @@ export default class Search extends React.Component {
         })
     }
 
+    setList(e) {
+        if (e.keyCode === 13) {
+            var userInput = this.state.term;
+            var list = this.state.cityList.filter(option => option.name.toLowerCase().indexOf(userInput.toLowerCase()) > -1);
+            console.log(list);
+            this.setState(prevState => ({
+                ...prevState,
+                filteredOptions: list
+            }))
+        }
+    }
+
     handleTermChange(e) {
         // Check input versus list of cities to populate autocomplete list
         if (e.target.value.indexOf(' ') !== 0) {
-            if (e.target.value.length > 10 || e.target.value.indexOf(' ') >= 1) {
-                var userInput = e.target.value;
-                var list = this.state.cityList.filter(option => option.name.toLowerCase().indexOf(userInput.toLowerCase()) > -1);
-                console.log(list);
+            if (e.target.value.length > 1 || e.target.value.indexOf(' ') >= 1) {
                 this.setState(prevState => ({
                     ...prevState,
                     term: e.target.value,
-                    filteredOptions: list,
                     showOptions: true
                 }))
             } else {
@@ -85,7 +94,7 @@ export default class Search extends React.Component {
         return (
             <div className="container-form">
            <div className="form">
-                <input name="city" type="text" onChange={this.handleTermChange} required/>
+                <input name="city" type="text" onChange={this.handleTermChange} onKeyDown={this.setList} required/>
                 <label htmlFor="city" className="label-name">
                     <span className="content-name">Search for a city</span>
                 </label>

@@ -18,11 +18,11 @@ export default class SearchResults extends React.Component {
     render() {
         const array = this.props.list.map(location => <SearchResultDetail location={location} search={this.search}/>)
         console.log(array);
-        const array1 = array.slice(1,10);
+        // const array1 = array.slice(1,10);
         return (
             <div className="searchResults-container">
                 <Transition
-                    items={array1} keys={item => item.props.location.id}
+                    items={array} keys={item => item.props.location.id}
                     from={{ transform: 'translate3d(-100px,0,0)', opacity: 0 }}
                     enter={{ transform: 'translate3d(0,0px,0)', opacity: 1 }}
                     leave={{ transform: 'translate3d(-100px,0,0)', opacity: 0 }}>
