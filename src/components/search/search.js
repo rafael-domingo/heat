@@ -10,7 +10,8 @@ export default class Search extends React.Component {
             term: '',
             cityList: [],
             filteredOptions: [],
-            showOptions: true
+            showOptions: true,
+            error: ''
         }
         this.search = this.search.bind(this);
         this.handleTermChange = this.handleTermChange.bind(this);
@@ -45,46 +46,46 @@ export default class Search extends React.Component {
     }
 
     setList(e) {
-        if (e.keyCode === 13) {
-            var userInput = this.state.term;
-            var list = this.state.cityList.filter(option => option.name.toLowerCase().indexOf(userInput.toLowerCase()) > -1);
+        var userInput = this.state.term;
+        var list = this.state.cityList.filter(option => option.name.toLowerCase().indexOf(userInput.toLowerCase()) > -1);
+        if (list.length < 100) {
             console.log(list);
             this.setState(prevState => ({
                 ...prevState,
-                filteredOptions: list
+                filteredOptions: list,
+                error: '',
+                showOptions: true
+            }))
+        } else if (e.keyCode === 13 || list.length > 100) {
+            console.log('list is too long')
+            this.setState(prevState => ({
+                ...prevState,
+                error: 'Keep typing to narrow down your search',
+                filteredOptions: [],
+                showOptions: true
             }))
         }
     }
 
     handleTermChange(e) {
-        // Check input versus list of cities to populate autocomplete list
-        if (e.target.value.indexOf(' ') !== 0) {
-            if (e.target.value.length > 1 || e.target.value.indexOf(' ') >= 1) {
-                this.setState(prevState => ({
-                    ...prevState,
-                    term: e.target.value,
-                    showOptions: true
-                }))
-            } else {
-                // TODO: clean up these if/else statements
-                this.setState(prevState => ({
-                    ...prevState,
-                    term: e.target.value,
-                    filteredOptions: [],
-                    showOptions: true
-                }))
-                this.props.render(false);
-            }            
+        // Set input to state
+        if (e.target.value.length > 0) {
+            this.setState(prevState => ({
+                ...prevState,
+                term: e.target.value
+            }))
         } else {
             this.setState(prevState => ({
                 ...prevState,
                 term: e.target.value,
                 filteredOptions: [],
-                showOptions: true
+                error: '',
+                showOptions: false
             }))
             this.props.render(false);
-        } 
+            }            
         }
+        
     componentDidMount() {
         window.addEventListener('load', this.autoComplete());
     }
@@ -100,6 +101,7 @@ export default class Search extends React.Component {
                 </label>
             </div>
             <div style={{display: this.state.showOptions ? 'flex' : 'none', width: '100%'}}>
+                <p>{this.state.error}</p>
                 <SearchResults list={this.state.filteredOptions} search={this.search}/>
 
             </div>
