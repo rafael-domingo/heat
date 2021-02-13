@@ -10,6 +10,7 @@ import { exampleObject } from './util/exampleObject';
 import GridContainer from './components/grid/index';
 import Search from './components/search/search';
 import Logo from './components/logo/logo';
+import Location from './components/location/location';
 
 class App extends React.Component {
   constructor(props) {
@@ -17,7 +18,8 @@ class App extends React.Component {
     this.state = {
       weather: exampleObject,
       data: [],
-      renderGrid: false
+      renderGrid: false,
+      cityId: null
     }
     this.getWeather = this.getWeather.bind(this);
     this.search = this.search.bind(this);
@@ -25,11 +27,13 @@ class App extends React.Component {
   }
   
   getWeather(term) {
-    Weather.getWeather(term).then(weatherObject => {
+    console.log(this.state.cityId);
+    Weather.getWeather(term.location.id).then(weatherObject => {
       if (weatherObject) {
         this.setState(prevState => ({
           ...prevState,
-          data: Weather.constructState(weatherObject)
+          data: Weather.constructState(weatherObject),
+          cityId: term
         }))
         this.renderGrid(true)
         console.log('succes')
@@ -37,7 +41,8 @@ class App extends React.Component {
         console.log('error')
         this.setState(prevState => ({
           ...prevState,
-          weatherObject: []
+          weatherObject: [],
+          cityId: null
       }))
         this.renderGrid(false)
       }
@@ -54,6 +59,7 @@ class App extends React.Component {
 
   search(term) {
     this.getWeather(term);
+   
   }
 
   render() {
@@ -63,7 +69,8 @@ class App extends React.Component {
           <Logo />
           <Search search={this.search} render={this.renderGrid}/>
         </div>
-        <div className="graph-group">
+        <div className="graph-group" style={{color: 'white'}}>
+          <Location city={this.state.cityId} render={this.state.renderGrid}/>
           <GridContainer data={this.state.data} render={this.state.renderGrid}/>
         </div>
       </div>

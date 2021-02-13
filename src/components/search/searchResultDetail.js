@@ -8,7 +8,9 @@ export default class SearchResultDetail extends React.Component {
     }
 
     search() {
-        this.props.search(`${this.props.location.name}`);
+        // this.props.search(`${this.props.location.id}`);
+        console.log(this.props);
+        this.props.search(this.props);
     }
 
 
@@ -19,6 +21,7 @@ export default class SearchResultDetail extends React.Component {
                 <button onClick={this.search}>
                         <div className="button-text">
                             <p>{this.props.location.name}</p>
+                            <p>{this.props.location.state}</p>
                             <p>{this.props.location.country}</p>
                         </div>
                 </button>

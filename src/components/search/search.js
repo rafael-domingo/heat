@@ -57,6 +57,7 @@ export default class Search extends React.Component {
                 showOptions: true
             }))
         } else if (e.keyCode === 13 || list.length > 100) {
+            this.props.render(true);
             console.log('list is too long')
             this.setState(prevState => ({
                 ...prevState,
@@ -68,6 +69,8 @@ export default class Search extends React.Component {
     }
 
     handleTermChange(e) {
+        // Remove grid when changing text
+        this.props.render(false);
         // Set input to state
         if (e.target.value.length > 0) {
             this.setState(prevState => ({
@@ -82,7 +85,6 @@ export default class Search extends React.Component {
                 error: '',
                 showOptions: false
             }))
-            this.props.render(false);
             }            
         }
         

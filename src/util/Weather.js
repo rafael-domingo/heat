@@ -3,13 +3,13 @@ const apiKey = '437460ab496455bcd26c841eb450f1cf';
 export const Weather = {
     getCoordinates(location) {
         // Format location input if supplying 'city, state'
-        if (location.includes(',')) {
-            location = location.replace(/\s/g, '');
-            console.log(location);
-        }
+        // if (location.includes(',')) {
+        //     location = location.replace(/\s/g, '');
+        //     console.log(location);
+        // }
         
         // Using Current Weather API call to get lat and long
-        var url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${apiKey}`;
+        var url = `https://api.openweathermap.org/data/2.5/weather?id=${location}&appid=${apiKey}`;
 
         return fetch(`${url}`).then(response => {
             if (!response) {
@@ -22,6 +22,7 @@ export const Weather = {
                 console.log('No jsonResponse');
                 return [];
             }
+            console.log(jsonResponse);
             console.log(jsonResponse.coord)
             return jsonResponse.coord;
         })
