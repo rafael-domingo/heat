@@ -19,7 +19,6 @@ export default class Search extends React.Component {
     }
 
     search(input) {
-        // TODO: refactor this to search when selecting city from list
         console.log(input);
         this.props.search(input);
         this.setState(prevState => ({
